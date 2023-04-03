@@ -19,9 +19,11 @@ def search_html_for_TA(html, df):
             df.loc[df['Full Name'] == name, 'Done Grading'] = True        
 
 def get_emails(df):
-    name_array = ', '.join(df.loc[df['Done Grading'] == False]["Email"].to_list())
-    print(f"[{name_array}]")
+    print("# TA not done grading: ", len(df.loc[df['Done Grading'] == False]["Email"].to_list()))
+    return ', '.join(df.loc[df['Done Grading'] == False]["Email"].to_list())
+    
 
 df = get_list_of_TAs("roster.xlsx")
 search_html_for_TA('html_elem.txt', df)
-get_emails(df)
+name_array = get_emails(df)
+print(f"[{name_array}]")
