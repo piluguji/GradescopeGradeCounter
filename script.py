@@ -23,7 +23,7 @@ def get_emails(df):
     return ', '.join(df.loc[df['Done Grading'] == False]["Email"].to_list())
     
 
-df = get_list_of_TAs("roster.xlsx")
+df = get_list_of_TAs("rosters/roster.xlsx")
 search_html_for_TA('html_elem.txt', df)
 name_array = get_emails(df)
 print(f"[{name_array}]")
